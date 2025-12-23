@@ -6,20 +6,10 @@
 
     <main>
       <div class="todo-form">
-        <input
-          v-model="newTodo.title"
-          @keyup.enter="addTodo"
-          type="text"
-          placeholder="What needs to be done?"
-          class="todo-input"
-        />
-        <input
-          v-model="newTodo.description"
-          @keyup.enter="addTodo"
-          type="text"
-          placeholder="Description (optional)"
-          class="todo-input"
-        />
+        <input v-model="newTodo.title" @keyup.enter="addTodo" type="text" placeholder="What needs to be done? Again"
+          class="todo-input" />
+        <input v-model="newTodo.description" @keyup.enter="addTodo" type="text" placeholder="Description (optional)"
+          class="todo-input" />
         <button @click="addTodo" class="btn btn-primary">Add Todo</button>
       </div>
 
@@ -30,19 +20,9 @@
         <div v-if="todos.length === 0" class="empty-state">
           No todos yet. Add one above!
         </div>
-        
-        <div
-          v-for="todo in todos"
-          :key="todo.id"
-          class="todo-item"
-          :class="{ completed: todo.completed }"
-        >
-          <input
-            type="checkbox"
-            :checked="todo.completed"
-            @change="toggleTodo(todo)"
-            class="todo-checkbox"
-          />
+
+        <div v-for="todo in todos" :key="todo.id" class="todo-item" :class="{ completed: todo.completed }">
+          <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo)" class="todo-checkbox" />
           <div class="todo-content">
             <h3>{{ todo.title }}</h3>
             <p v-if="todo.description" class="todo-description">
@@ -205,7 +185,9 @@ h1 {
   background-color: #da190b;
 }
 
-.loading, .error, .empty-state {
+.loading,
+.error,
+.empty-state {
   text-align: center;
   padding: 40px;
   color: #666;
