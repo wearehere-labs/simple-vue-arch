@@ -1,0 +1,32 @@
+{
+  "name": "todo-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A layered monorepo architecture for a todo application",
+  "scripts": {
+    "dev:api": "pnpm --filter @todo/api dev",
+    "dev:web": "pnpm --filter @todo/web dev",
+    "dev": "pnpm --parallel --filter @todo/api --filter @todo/web dev",
+    "build": "pnpm -r build",
+    "clean": "pnpm -r exec rm -rf dist node_modules"
+  },
+  "mpenny": {
+    "scripts": {
+      "initialize": "pnpm --filter @todo/domain mpenny-initialize && pnpm --filter @todo/data-access mpenny-initialize && pnpm --filter @todo/api mpenny-initialize && pnpm --filter @todo/web mpenny-initialize"
+    }
+  },
+  "keywords": [
+    "monorepo",
+    "todo",
+    "vue",
+    "express",
+    "mongodb"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@ai.kozlov/file-tools": "^1.0.2"
+  }
+}
